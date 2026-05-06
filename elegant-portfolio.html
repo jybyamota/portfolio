@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Janstin Ysvert B. Yamota - Computer Science Student & CCNA-Certified Developer">
+    <title>Janstin Ysvert B. Yamota | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: #fafaf8;
+            color: #2c2c2c;
+            line-height: 1.7;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background-color: #2c2c2c;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            color: #555;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 40px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c2c2c;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #2c2c2c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 1rem 24px;
+            }
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Main content */
+        main {
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .container {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            align-items: center;
+            gap: 4rem;
+            text-align: left;
+        }
+
+        .hero-text {
+            max-width: 560px;
+        }
+
+        .hero-name {
+            font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+            margin-bottom: 1rem;
+            white-space: nowrap;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-bio {
+            max-width: 500px;
+            margin: 0 0 3rem;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image {
+            width: min(100%, 320px);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 1px solid rgba(44, 44, 44, 0.12);
+            box-shadow: 0 16px 36px rgba(44, 44, 44, 0.12);
+            background-color: #f0ede8;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border: 2px solid #2c2c2c;
+            background: transparent;
+            color: #2c2c2c;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #2c2c2c;
+            color: #fafaf8;
+            border-color: #2c2c2c;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 44, 44, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #444;
+            border-color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-bio {
+                margin: 0 auto 2rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                width: min(100%, 300px);
+            }
+
+            .hero-name {
+                white-space: normal;
+            }
+
+            .cta-buttons {
+                gap: 1rem;
+            }
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 0;
+            background-color: #fff;
+            border-top: 1px solid rgba(44, 44, 44, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .skill-card {
+            padding: 2.5rem;
+            border: 1px solid rgba(44, 44, 44, 0.08);
+            background-color: #fafaf8;
+            transition: all 0.4s ease;
+        }
+
+        .skill-card:hover {
+            border-color: rgba(44, 44, 44, 0.2);
+            background-color: #fff;
+            transform: translateY(-4px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            height: 2px;
+            background-color: rgba(44, 44, 44, 0.1);
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #2c2c2c;
+            transition: width 1s ease-out 0.3s;
+        }
+
+        .progress-label {
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.08);
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(44, 44, 44, 0.2);
+            line-height: 1;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .project-description {
+            color: #555;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.9rem;
+            background-color: #f0ede8;
+            color: #555;
+            border-radius: 20px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .project-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2c2c2c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.3s ease;
+        }
+
+        .project-arrow:hover {
+            gap: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-item {
+                grid-template-columns: 50px 1fr;
+                gap: 1.5rem;
+            }
+            .project-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Education Section */
+        .education {
+            padding: 6rem 0;
+            background-color: #fff;
+            border-top: 1px solid rgba(44, 44, 44, 0.1);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .education-list {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .education-item {
+            padding: 2.5rem;
+            border: 1px solid rgba(44, 44, 44, 0.08);
+            background-color: #fafaf8;
+            transition: all 0.4s ease;
+        }
+
+        .education-item:hover {
+            border-color: rgba(44, 44, 44, 0.2);
+            background-color: #fff;
+            transform: translateY(-4px);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .education-header h3 {
+            margin: 0;
+            flex: 1;
+        }
+
+        .education-period {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            padding-top: 0.2rem;
+        }
+
+        .education-institution {
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .education-details {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .education-achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .education-achievements p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .education-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .education-period {
+                white-space: normal;
+            }
+
+            .education-item {
+                padding: 1.8rem;
+            }
+        }
+
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(44, 44, 44, 0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .project-item {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-item:nth-child(1) { animation-delay: 0.15s; }
+        .project-item:nth-child(2) { animation-delay: 0.3s; }
+        .project-item:nth-child(3) { animation-delay: 0.45s; }
+
+        /* Utilities */
+        .scroll-hidden {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Janstin Ysvert B. Yamota</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="resume.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-name">Janstin Ysvert <em>Yamota</em></h1>
+                        <p class="hero-tagline">Computer Science Student & CCNA-Certified Developer</p>
+                        <p class="hero-bio">Computer Science student with ability to develop functional applications through academic projects. CCNA-certified aspiring developer seeking an OJT position to apply programming skills in team-based software development.</p>
+                        <div class="cta-buttons">
+                            <a href="#projects" class="btn btn-primary">View Work</a>
+                            <a href="#contact" class="btn">Get In Touch</a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrap">
+                        <img class="hero-image" src="resumepfp.png" alt="Portrait of Janstin Ysvert Yamota">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <h3>Frontend Development</h3>
+                        <p class="skill-description">React.js, Bootstrap, Tailwind, JavaScript, CSS, HTML5 — crafting responsive, accessible interfaces.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="progress-label">Advanced</div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>Backend Development</h3>
+                        <p class="skill-description">Node.js, PHP, Python, Java — building scalable server-side applications with database optimization.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%;"></div>
+                        </div>
+                        <div class="progress-label">Intermediate</div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>Database Development</h3>
+                        <p class="skill-description">MySQL design and optimization. Expert SQL query optimization for improved system performance.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                        <div class="progress-label">Advanced</div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🔧</div>
+                        <h3>Developer Tools</h3>
+                        <p class="skill-description">GitHub, Cisco Packet Tracer, Figma, Visual Studio Code — proficient across all major platforms.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 82%;"></div>
+                        </div>
+                        <div class="progress-label">Advanced</div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>Networking & Security</h3>
+                        <p class="skill-description">CCNA: Introduction to Networks certified. Knowledge of network protocols and system administration.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="progress-label">Intermediate</div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">💡</div>
+                        <h3>Soft Skills</h3>
+                        <p class="skill-description">Adaptability, attentive to detail, problem-solving, and active contributor in team projects.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%;"></div>
+                        </div>
+                        <div class="progress-label">Advanced</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2>Featured Work</h2>
+                <div class="projects-list">
+                    <article class="project-item">
+                        <div class="project-number">01</div>
+                        <div class="project-content">
+                            <h3>Library Management System</h3>
+                            <p class="project-description">Developed a desktop application with OOP principles and role-based access for librarians and borrowers. Reduced manual data entry by implementing automated logic for precise calculations and overdue tracking.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Swing</span>
+                                <span class="tech-tag">AWT</span>
+                                <span class="tech-tag">OOP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-item">
+                        <div class="project-number">02</div>
+                        <div class="project-content">
+                            <h3>WOW Carmen Order & Inventory System</h3>
+                            <p class="project-description">Designed a full-stack solution using MySQL relational database. Created a responsive Laravel dashboard with automated order workflows and real-time stock alerts. Optimized data retrieval with efficient SQL queries, improving system load times.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <a href="https://github.com/HenriDillo/wowc" class="project-arrow" target="_blank" rel="noopener noreferrer">View Project <span>→</span></a>
+                        </div>
+                    </article>
+
+                    <article class="project-item">
+                        <div class="project-number">03</div>
+                        <div class="project-content">
+                            <h3>FedEx Website Redesign</h3>
+                            <p class="project-description">Redesigned a FedEx-inspired website using HTML, CSS, and JavaScript with Figma prototypes. Enhanced UI/UX by improving navigation flow, layout organization, and overall visual consistency for a modern, responsive interface.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Figma</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-item">
+                        <div class="project-number">04</div>
+                        <div class="project-content">
+                            <h3>Education Program Management System</h3>
+                            <p class="project-description">Built a Laravel-based web application for managing educational programs, subjects, and users. Implemented authentication, dashboard analytics, and CRUD operations for subjects and programs with role-based access, plus admin-only user management.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <a href="https://github.com/jybyamota/yamota_final" class="project-arrow" target="_blank" rel="noopener noreferrer">View Project <span>→</span></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-list">
+                    <article class="education-item">
+                        <div class="education-header">
+                            <h3>Bachelor of Science in Computer Science</h3>
+                            <span class="education-period">June 2023 – Present</span>
+                        </div>
+                        <p class="education-institution">Ateneo de Davao University (ADDU)</p>
+                        <p class="education-details">Relevant Coursework: Networking Programming, Data Structures & Algorithms, Software Engineering, Database Management, Event Driven Programming, Object-Oriented Programming. Active contributor in group system development projects.</p>
+                    </article>
+
+                    <article class="education-item">
+                        <div class="education-header">
+                            <h3>Senior High School – Computer Programming</h3>
+                            <span class="education-period">June 2021 – 2023</span>
+                        </div>
+                        <p class="education-institution">Tagum National Trade School (TNTS)</p>
+                        <div class="education-achievements">
+                            <p>🎓 Graduated with Honors</p>
+                            <p>🏆 Awarded 3rd in Best in Research and Loyalty Award</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Janstin Ysvert Yamota</p>
+                <p>Davao City, Philippines</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        // Update active state
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Scroll to section
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main section');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll into view
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
